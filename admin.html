@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Manager | Asabana Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Inter', sans-serif; }</style>
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body class="bg-stone-50 text-stone-900 p-8">
+    <div id="adminContent" class="max-w-4xl mx-auto hidden">
+        <header class="flex justify-between items-center mb-12">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden border border-stone-200 shadow-sm">
+                    <img src="images/logo.jpg" alt="Logo" class="w-100 h-100 object-cover">
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tight">Asabana Price Manager</h1>
+                    <p class="text-stone-500 text-sm">Manage menu items, images, and prices.</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="netlifyIdentity.logout()" class="text-sm font-semibold text-stone-500 hover:text-red-600">Logout</button>
+                <a href="index.html" class="text-sm font-semibold text-amber-600 hover:underline">View Live Menu &rarr;</a>
+            </div>
+        </header>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 mb-8">
+            <div class="flex flex-wrap gap-4 mb-6 items-center">
+                <input type="text" id="adminSearch" placeholder="Search menu..." class="flex-grow px-4 py-2 rounded-lg border border-stone-200 focus:ring-2 focus:ring-amber-500">
+                <button onclick="openModal()" class="bg-stone-900 text-white px-4 py-2 rounded-lg text-sm font-bold">+ Add New Item</button>
+                <button onclick="commitChanges()" id="saveBtn" class="bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-amber-700 transition">Publish Changes</button>
+            </div>
+
+            <div id="itemList" class="divide-y divide-stone-100">
+                <p class="py-8 text-center text-stone-400">Loading menu data...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl">
+            <h2 id="modalTitle" class="text-xl font-bold mb-4">Edit Item</h2>
+            <form id="editForm" class="space-y-4">
+                <input type="hidden" id="itemId">
+                <div>
+                    <label class="text-xs font-bold uppercase text-stone-400">Name</label>
+                    <input type="text" id="itemName" class="w-full border rounded-lg p-2" required>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold uppercase text-stone-400">Price (₦)</label>
+                        <input type="number" id="itemPrice" class="w-full border rounded-lg p-2" required>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold uppercase text-stone-400">Category</label>
+                        <select id="itemCategory" class="w-full border rounded-lg p-2">
+                            <option value="swallow">Swallow</option>
+                            <option value="quick-bites">Quick Bites</option>
+                            <option value="rice">Rice & Pasta</option>
+                            <option value="protein">Protein</option>
+                            <option value="grills-and-outdoors">Grills & Outdoors</option>
+                            <option value="alcohol">Alcohol</option>
+                            <option value="malt-energy">Malt & Energy</option>
+                            <option value="sodas">Sodas</option>
+                            <option value="water">Water</option>
+                            <option value="juices-yoghurt-tea">Juices & Tea</option>
+                            <option value="specials">Chef's Specials</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-bold uppercase text-stone-400">Image</label>
+                    <input type="file" id="itemFile" accept="image/*" class="w-full text-sm">
+                    <p id="imagePathDisplay" class="text-[10px] text-stone-500 mt-1"></p>
+                </div>
+                <div class="flex gap-2 pt-4">
+                    <button type="button" onclick="closeModal()" class="flex-1 py-2 border rounded-lg">Cancel</button>
+                    <button type="submit" class="flex-1 py-2 bg-amber-600 text-white rounded-lg font-bold">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

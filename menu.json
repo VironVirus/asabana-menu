@@ -1,0 +1,41 @@
+{
+  "food": [
+    { "id": "food-semo-soup", "title": "Semo and soup only", "price": 5000, "category": "swallow", "img": "images/semo.jpg", "description": "Smooth semolina served with a rich, savory broth." },
+    { "id": "food-oha-semo-goat", "title": "Oha soup and Semo with Goat meat", "price": 9000, "category": "swallow", "img": "images/oha and goatmeat.jpg", "description": "Cocoyam-thickened Oha soup served with semolina and succulent goat meat." },
+    { "id": "food-plantain", "title": "Fried plantain", "price": 1000, "category": "quick-bites", "img": "images/fried plantain.jpg", "description": "Sweet caramelized fried plantain slices." },
+    { "id": "food-custard", "title": "Custard", "price": 1000, "category": "quick-bites", "img": "images/custard.jpg", "description": "Smooth warm vanilla-flavored custard." },
+    { "id": "food-omellete", "title": "Omelette", "price": 2500, "category": "quick-bites", "img": "images/omellete.jpg", "description": "Pan-seared egg omelette with vegetables." },
+    { "id": "food-indomie-egg", "title": "Indomie and egg", "price": 4000, "category": "quick-bites", "img": "images/indomie and egg.jpg", "description": "Stir-fried noodles with fried or boiled eggs." },
+    { "id": "food-jollof-beef", "title": "Jollof rice and beef", "price": 9000, "category": "rice", "img": "images/jollof and beef.jpg", "description": "Flavorful Jollof rice served with tender beef." },
+    { "id": "food-gizzard", "title": "Peppered Gizzard", "price": 3000, "category": "protein", "img": "images/peppered gizzard.jpg", "description": "Crunchy gizzards sautéed with peppers and onions." },
+    { "id": "food-catfish-only", "title": "Full Catfish Only", "price": 20000, "category": "grills-and-outdoors", "img": "images/full catfish.jpg", "description": "Flame-grilled whole catfish with house spices." }
+  ],
+  "drinks": [
+    { "id": "drink-33", "title": "33", "price": 1500, "category": "alcohol", "img": "images/33.jpg" },
+    { "id": "drink-tiger", "title": "Tiger", "price": 1500, "category": "alcohol", "img": "images/tiger.jpg" },
+    { "id": "drink-hero", "title": "Hero", "price": 1500, "category": "alcohol", "img": "images/Hero.jpg" },
+    { "id": "drink-life", "title": "Life", "price": 1500, "category": "alcohol", "img": "images/life.jpg" },
+    { "id": "drink-budweiser", "title": "Budweiser", "price": 2000, "category": "alcohol", "img": "images/budweiser.jpg" },
+    { "id": "drink-gulder", "title": "Gulder", "price": 2000, "category": "alcohol", "img": "images/gulder.jpg" },
+    { "id": "drink-legend", "title": "Legend", "price": 2000, "category": "alcohol", "img": "images/legend.jpg" },
+    { "id": "drink-star", "title": "Star", "price": 2000, "category": "alcohol", "img": "images/star.jpg" },
+    { "id": "drink-fearless", "title": "Fearless", "price": 1000, "category": "malt-energy", "img": "images/fearless.jpg" },
+    { "id": "drink-monster", "title": "Monster", "price": 2500, "category": "malt-energy", "img": "images/monster.jpg" },
+    { "id": "drink-amstel", "title": "Amstel Malt", "price": 1500, "category": "malt-energy", "img": "images/amstel.jpg" },
+    { "id": "drink-beta-malt", "title": "Beta Malt", "price": 1500, "category": "malt-energy", "img": "images/beta.jpg" },
+    { "id": "drink-maltina", "title": "Maltina", "price": 1500, "category": "malt-energy", "img": "images/maltina.jpg" },
+    { "id": "drink-hollandia", "title": "Hollandia Yoghurt", "price": 3500, "category": "juices-yoghurt-tea", "img": "images/hollandia.jpg" },
+    { "id": "drink-chivita", "title": "Chivita", "price": 3500, "category": "juices-yoghurt-tea", "img": "images/chivita.jpg" },
+    { "id": "drink-fayrouz", "title": "Fayrouz", "price": 1500, "category": "sodas", "img": "images/fayrouz.jpg" },
+    { "id": "drink-teem", "title": "Teem", "price": 1000, "category": "sodas", "img": "images/teem.jpg" },
+    { "id": "drink-coke", "title": "Coke", "price": 1000, "category": "sodas", "img": "images/coke.jpg" },
+    { "id": "drink-fanta", "title": "Fanta", "price": 1000, "category": "sodas", "img": "images/fanta.jpg" },
+    { "id": "drink-pepsi", "title": "Pepsi", "price": 1000, "category": "sodas", "img": "images/pepsi.jpg" },
+    { "id": "drink-sprite", "title": "Sprite", "price": 1000, "category": "sodas", "img": "images/sprite.jpg" },
+    { "id": "drink-schweppes", "title": "Schweppes", "price": 1000, "category": "sodas", "img": "images/schweppes.jpg" },
+    { "id": "drink-mirinda", "title": "Mirinda", "price": 1000, "category": "sodas", "img": "images/mirinda.jpg" }
+  ],
+  "specials": [
+    { "id": "special-catfish-platter", "title": "Full Catfish Platter with Yam/Plantain", "price": 23000, "category": "specials", "img": "images/home platter.jpg", "description": "Our signature whole catfish, expertly flame-grilled.", "tags": ["Signature Selection", "Best for sharing"] }
+  ]
+}

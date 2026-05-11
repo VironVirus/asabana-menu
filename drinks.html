@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asabana Hotel menu featuring premium food and drinks in a refined dining experience.">
+    <meta name="theme-color" content="#1f1a17">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <title>Drinks Menu | Asabana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- React and Babel -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="text-stone-900" data-page="drinks">
+    <header class="drinks-gradient hero-shell">
+        <div class="hero-inner !py-4 md:!py-12">
+            <div class="hero-copy">
+                <span class="hero-kicker">Exquisite Beverage Collection</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl">Beverage Collection</h1>
+                <p class="hidden md:block">
+                    A sophisticated collection of premium spirits and refreshments curated for a refined experience.
+                </p>
+                <div class="hero-actions mt-6 md:mt-8">
+                    <a href="#alcohol" class="inline-flex items-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-blue-700">Explore Our Collection</a>
+                    <a href="food.html" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/20">View Culinary Collection</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="sticky-nav py-4 px-4">
+        <div class="nav-shell">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand__crest">
+                    <img src="images/logo.jpg" alt="Asabana Logo">
+                </span>
+                <span class="nav-brand__text">
+                    <span class="nav-brand__title">Asabana Hotel</span>
+                    <span class="nav-brand__sub">Classic Menu Collection</span>
+                </span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-tab hover:text-amber-700 transition-colors">Specials</a>
+                <a href="food.html" class="nav-tab hover:text-amber-700 transition-colors">Food</a>
+                <a href="drinks.html" class="nav-tab is-active text-amber-700">Drinks</a>
+            </div>
+
+            <div class="nav-search">
+                <input type="text" id="menuSearch" placeholder="Search our collection...">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+            <button id="cartTrigger" class="ml-4 relative">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <span class="hidden sm:inline text-[11px] font-bold uppercase tracking-widest mt-0.5">Cart</span>
+                <span class="cart-badge absolute -top-1 -right-2 bg-white text-wine text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden border border-stone-100 shadow-sm">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="page-shell page-shell--menu">
+        <div id="noResults" class="hidden text-center py-20">
+            <h3 class="text-3xl text-stone-500">No results found</h3>
+            <p class="text-stone-500 mt-2">Please refine your search criteria or explore the menu sections above.</p>
+        </div>
+
+        <div class="category-layout">
+            <aside class="page-sidebar">
+                <h3>Quick Navigation</h3>
+                <nav>
+                    <a href="#alcohol"><span>Alcohol</span><span>01</span></a>
+                    <a href="#malt-energy"><span>Malt & Energy</span><span>02</span></a>
+                    <a href="#water"><span>Water</span><span>03</span></a>
+                    <a href="#juices-yoghurt-tea"><span>Juices & Tea</span><span>04</span></a>
+                    <a href="#sodas"><span>Sodas</span><span>05</span></a>
+                    <a href="#all"><span>Show Full Drinks Menu</span><span>All</span></a>
+                </nav>
+            </aside>
+
+            <div>
+            <!-- Top Category Navigation -->
+            <div class="sticky-category-wrapper sticky-category-wrapper--top">
+                <div class="category-chip-row menu-overview__chips">
+                    <a href="#alcohol" class="category-chip">Alcohol</a>
+                    <a href="#malt-energy" class="category-chip">Malt and Energy Drinks</a>
+                    <a href="#water" class="category-chip">Water</a>
+                    <a href="#juices-yoghurt-tea" class="category-chip">Juices, Yoghurt and Iced Tea</a>
+                    <a href="#sodas" class="category-chip">Sodas</a>
+                    <a href="#all" class="category-chip">Show All</a>
+                </div>
+            </div>
+            <div id="menu-root">
+                <!-- React will render the dynamic menu content here -->
+            </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Category Navigation -->
+    <div class="sticky-category-wrapper sticky-category-wrapper--bottom is-hidden">
+        <div class="category-chip-row menu-overview__chips">
+            <a href="#alcohol" class="category-chip">Alcohol</a>
+            <a href="#malt-energy" class="category-chip">Malt and Energy Drinks</a>
+            <a href="#water" class="category-chip">Water</a>
+            <a href="#juices-yoghurt-tea" class="category-chip">Juices, Yoghurt and Iced Tea</a>
+            <a href="#sodas" class="category-chip">Sodas</a>
+            <a href="#all" class="category-chip">Show All</a>
+        </div>
+    </div>
+
+    <footer class="bg-stone-950 text-stone-300 py-12 text-center mt-12">
+        <p class="font-medium tracking-wide">&copy; 2026 Asabana Hotel. All rights reserved.</p>
+        <p class="text-xs mt-2 uppercase tracking-[0.22em] text-stone-500">Classic Dining • Drinks Collection</p>
+    </footer>
+
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700 z-[60]">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- Cart Root -->
+    <div id="cart-root"></div>
+
+    <script src="script.js" type="text/babel" data-presets="react"></script>
+</body>
+</html>

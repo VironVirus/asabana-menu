@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Asabana Hotel menu featuring premium food and drinks in a refined dining experience.">
+    <meta name="theme-color" content="#1f1a17">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <title>Asabana Menu | Hotel Dining</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- React and Babel for seamless cart logic -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Handle Netlify Identity redirect from confirmation/invite emails
+        if (window.location.hash && (
+            window.location.hash.includes('invite_token') || 
+            window.location.hash.includes('recovery_token')
+        )) {
+            window.location.href = '/admin.html' + window.location.hash;
+        }
+    </script>
+</head>
+<body class="text-stone-900" data-page="home">
+    <header class="menu-gradient hero-shell">
+        <div class="hero-inner !py-8 md:!py-24">
+            <div class="hero-copy">
+                <span class="hero-kicker">Exquisite Hotel Dining • Est. Asabana</span>
+                <h1 class="text-3xl md:text-5xl lg:text-6xl">The Asabana Culinary Experience</h1>
+                <p class="hidden md:block">
+                    Immerse yourself in a refined dining experience defined by timeless elegance, sophisticated presentation, and a curated selection of gourmet flavors.
+                </p>
+                <div class="hero-actions mt-6 md:mt-8">
+                    <a href="#specials" class="inline-flex items-center rounded-full bg-amber-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white shadow-lg transition hover:bg-amber-600">Discover Today's Selection</a>
+                    <a href="food.html" class="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white/20">Explore Culinary Collection</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav class="sticky-nav py-4 px-4">
+        <div class="nav-shell">
+            <a href="index.html" class="nav-brand">
+                <span class="nav-brand__crest">
+                    <img src="images/logo.jpg" alt="Asabana Logo">
+                </span>
+                <span class="nav-brand__text">
+                    <span class="nav-brand__title">Asabana Hotel</span>
+                    <span class="nav-brand__sub">Classic Menu Collection</span>
+                </span>
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="nav-tab is-active text-amber-700">Specials</a>
+                <a href="food.html" class="nav-tab hover:text-amber-700 transition-colors">Food</a>
+                <a href="drinks.html" class="nav-tab hover:text-amber-700 transition-colors">Drinks</a>
+            </div>
+
+            <div class="nav-search">
+                <input type="text" id="menuSearch" placeholder="Search our specials...">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+            <!-- Cart Trigger -->
+            <button id="cartTrigger" class="ml-4 relative">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                <span class="hidden sm:inline text-[11px] font-bold uppercase tracking-widest mt-0.5">Cart</span>
+                <span class="cart-badge absolute -top-1 -right-2 bg-white text-wine text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden border border-stone-100 shadow-sm">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="page-shell">
+        <div id="noResults" class="hidden text-center py-20">
+            <h3 class="text-3xl text-stone-500">No results found</h3>
+            <p class="text-stone-500 mt-2">Please refine your search criteria or explore our menu categories.</p>
+        </div>
+
+        <section id="specials" class="menu-section mt-16">
+            <div class="section-title">
+                <h2>Daily Chef's Selection</h2>
+                <div class="section-title__line"></div>
+            </div>
+
+            <!-- Target for dynamic menu items from menu.json -->
+            <div id="menu-root"></div>
+
+            <div data-category="specials" class="special-card">
+                <div class="special-card__media">
+                    <img src="images/home platter.jpg" alt="Full Catfish Platter">
+                </div>
+
+                <div class="special-card__body" data-menu-item data-item-id="special-catfish-platter">
+                    <span class="special-badge">Signature Selection</span>
+                    <h3>Full Catfish Platter with Yam/Plantain</h3>
+                    <p>
+                        Our signature whole catfish, expertly flame-grilled and served with your choice of golden fried yam or sweet caramelized plantain, accompanied by a spicy traditional reduction.
+                    </p>
+
+                    <div class="special-meta">
+                        <span>Best for sharing</span>
+                        <span>Rich pepper finish</span>
+                        <span>Classic grill selection</span>
+                    </div>
+
+                    <div class="flex items-center justify-between mt-6">
+                        <button
+                            type="button"
+                            data-cart-action="add"
+                            class="special-price special-price--btn menu-item__price-btn"
+                            aria-label="Add Full Catfish Platter with Yam/Plantain to cart"
+                            title="Add Full Catfish Platter with Yam/Plantain to cart"
+                        >
+                            ₦23,000
+                        </button>
+                        <span class="hidden">Added via price button</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-stone-950 text-stone-300 py-12 text-center mt-12">
+        <p class="font-medium tracking-wide">&copy; 2026 Asabana Hotel. All rights reserved.</p>
+        <p class="text-xs mt-2 uppercase tracking-[0.22em] text-stone-500">Classic Dining • Food & Drinks</p>
+    </footer>
+
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-amber-600 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-amber-700 z-[60]">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <!-- Cart Root for React -->
+    <div id="cart-root"></div>
+
+    <script src="script.js" type="text/babel" data-presets="react"></script>
+</body>
+</html>
