@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
     }
 
     // Server-side email restriction
-    const ALLOWED_EMAILS = ['admin@asabanahotel.com', 'owner@example.com'];
+    const ALLOWED_EMAILS = ['admin@asabanahotel.com', 'owner@example.com', 'your-actual-email@example.com'];
     if (!ALLOWED_EMAILS.includes(user.email)) {
         return { statusCode: 403, body: "Forbidden: Access restricted to authorized users." };
     }

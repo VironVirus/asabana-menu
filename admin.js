@@ -4,7 +4,7 @@ const MAX_IMAGE_SIZE = 2 * 1024 * 1024; // 2MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 
 // Add authorized email addresses here
-const ALLOWED_EMAILS = ['admin@asabanahotel.com', 'owner@example.com'];
+const ALLOWED_EMAILS = ['admin@asabanahotel.com', 'owner@example.com', 'your-actual-email@example.com'];
 
 /**
  * Netlify Identity Logic
