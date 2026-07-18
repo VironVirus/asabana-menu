@@ -1,0 +1,14 @@
+# Runtime content is created and managed on the Hostinger server.
+/runtime/*
+!/runtime/.htaccess
+!/runtime/.gitkeep
+
+# Administrator uploads must survive code deployments.
+/uploads/*
+!/uploads/.htaccess
+!/uploads/.gitkeep
+
+# Local operating-system files.
+.DS_Store
+Thumbs.db
+

@@ -1,9 +1,0 @@
-{
-  "name": "asabana-menu",
-  "version": "1.0.0",
-  "description": "Hotel menu with Netlify CMS functions",
-  "main": "index.html",
-  "dependencies": {
-    "node-fetch": "^2.6.7"
-  }
-}

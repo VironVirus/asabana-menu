@@ -1,0 +1,33 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent web access to application internals and live flat-file data.
+    RewriteRule ^(?:\.git|data|includes|runtime)(?:/|$) - [R=404,L,NC]
+
+    # Keep old links working after the PHP migration.
+    RewriteRule ^index\.html$ index.php [R=301,L,NC]
+    RewriteRule ^food\.html$ food.php [R=301,L,NC]
+    RewriteRule ^drinks\.html$ drinks.php [R=301,L,NC]
+</IfModule>
+
+<FilesMatch "(^\.|README\.md$|\.json$|\.lock$|\.log$|composer\.(json|lock)$|package(-lock)?\.json$)">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 7 days"
+    ExpiresByType application/javascript "access plus 7 days"
+    ExpiresByType image/jpeg "access plus 30 days"
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
