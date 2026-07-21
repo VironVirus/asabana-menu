@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title description">
+  <title id="title">Menu item placeholder</title>
+  <desc id="description">A simple plate and cutlery illustration in Tapxora colours.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eafaf3"/>
+      <stop offset="1" stop-color="#fff1e4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#background)"/>
+  <circle cx="600" cy="450" r="220" fill="#fff" stroke="#18c87d" stroke-width="24"/>
+  <circle cx="600" cy="450" r="142" fill="#f3efe8" stroke="#0a3a2b" stroke-width="12" opacity=".9"/>
+  <path d="M310 280v330m-42-330v145c0 55 84 55 84 0V280m574 0v330m-70-330v210c0 44 70 44 70 0" fill="none" stroke="#ff9c4a" stroke-linecap="round" stroke-width="28"/>
+</svg>

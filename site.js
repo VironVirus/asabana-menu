@@ -1,8 +1,9 @@
 (() => {
     'use strict';
 
-    const CART_KEY = 'asabana_cart_v2';
-    const WHATSAPP_NUMBER = '2349037102853';
+    const CART_KEY = 'tapxora_template_cart_v1';
+    const WHATSAPP_NUMBER = (document.body.dataset.whatsappNumber || '').replace(/\D/g, '');
+    const ORDER_GREETING = document.body.dataset.orderGreeting || "Hello, I'd like to place an order:";
     const searchInput = document.querySelector('#menu-search');
     const categoryButtons = [...document.querySelectorAll('[data-category-filter]')];
     const menuCards = [...document.querySelectorAll('[data-menu-card]')];
@@ -216,9 +217,13 @@
         }
 
         if (target.closest('[data-whatsapp-order]') && cart.length > 0) {
+            if (!WHATSAPP_NUMBER) {
+                showToast('Add a WhatsApp number in includes/config.php to enable ordering.');
+                return;
+            }
             const lines = cart.map(item => `• ${item.title} (x${item.quantity}) — ${currency(item.price * item.quantity)}`);
             const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-            const message = `Hello Asabana Hotel, I'd like to order:\n\n${lines.join('\n')}\n\nTotal: ${currency(total)}`;
+            const message = `${ORDER_GREETING}\n\n${lines.join('\n')}\n\nTotal: ${currency(total)}`;
             window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
         }
     });
@@ -240,4 +245,3 @@
     renderCart();
     filterMenu();
 })();
-

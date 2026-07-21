@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-define('ASABANA_ADMIN', true);
+define('TAPXORA_ADMIN', true);
 require_once dirname(__DIR__) . '/includes/bootstrap.php';
 require_once BASE_PATH . '/includes/Auth.php';
 
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (isset($_GET['download']) && $_GET['download'] === 'menu') {
     $auth->requireAuthenticated();
     header('Content-Type: application/json; charset=UTF-8');
-    header('Content-Disposition: attachment; filename="asabana-menu-' . gmdate('Y-m-d') . '.json"');
+    header('Content-Disposition: attachment; filename="tapxora-template-menu-' . gmdate('Y-m-d') . '.json"');
     echo menu_store()->rawJson();
     exit;
 }
@@ -53,6 +53,7 @@ $items = $authenticated ? menu_store()->items(null, false) : [];
 $menuData = $authenticated ? menu_store()->data() : ['updated_at' => null];
 $flashMessage = $authenticated ? pull_flash() : null;
 $categoryGroups = menu_categories();
+$config = site_config();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,8 +61,9 @@ $categoryGroups = menu_categories();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex,nofollow">
-    <title>Menu Manager | Asabana Hotel</title>
-    <link rel="icon" href="<?= e(media_url('images/logo.jpg')) ?>">
+    <meta name="theme-color" content="#0a3a2b">
+    <title>Menu Manager | <?= e($config['name']) ?></title>
+    <link rel="icon" href="<?= e(media_url($config['logo'])) ?>">
     <link rel="stylesheet" href="<?= e(app_url('admin/admin.css')) ?>">
     <?php if ($authenticated): ?><script src="<?= e(app_url('admin/admin.js')) ?>" defer></script><?php endif; ?>
 </head>
@@ -69,7 +71,7 @@ $categoryGroups = menu_categories();
 <?php if (!$auth->hasAdmin()): ?>
     <main class="auth-shell">
         <section class="auth-card">
-            <img src="<?= e(media_url('images/logo.jpg')) ?>" alt="Asabana Hotel">
+            <img src="<?= e(media_url($config['logo'])) ?>" alt="Tapxora">
             <span>One-time setup</span>
             <h1>Create the menu administrator</h1>
             <p>Create this account immediately after the first deployment. Setup permanently closes when the account is saved.</p>
@@ -99,7 +101,7 @@ $categoryGroups = menu_categories();
 <?php elseif (!$authenticated): ?>
     <main class="auth-shell">
         <section class="auth-card">
-            <img src="<?= e(media_url('images/logo.jpg')) ?>" alt="Asabana Hotel">
+            <img src="<?= e(media_url($config['logo'])) ?>" alt="Tapxora">
             <span>Private administration</span>
             <h1>Sign in to manage the menu</h1>
             <p>Access is rate-limited and protected with secure server sessions.</p>
@@ -125,8 +127,8 @@ $categoryGroups = menu_categories();
 <?php else: ?>
     <header class="admin-header">
         <a class="admin-brand" href="<?= e(app_url('admin/')) ?>">
-            <img src="<?= e(media_url('images/logo.jpg')) ?>" alt="">
-            <span><strong>Asabana Menu Manager</strong><small>Signed in as <?= e($auth->username()) ?></small></span>
+            <img src="<?= e(media_url($config['logo'])) ?>" alt="">
+            <span><strong>Tapxora menu manager</strong><small>Signed in as <?= e($auth->username()) ?></small></span>
         </a>
         <nav>
             <a href="<?= e(app_url()) ?>" target="_blank" rel="noopener">View website</a>
@@ -147,9 +149,9 @@ $categoryGroups = menu_categories();
 
         <section class="dashboard-heading">
             <div>
-                <span>Menu administration</span>
-                <h1>Manage food and drinks</h1>
-                <p>Changes publish immediately. Uploaded images are resized, stripped of metadata, and compressed automatically.</p>
+                <span>Template control room</span>
+                <h1>Manage the live menu</h1>
+                <p>Add, edit, hide, feature, or delete items. Every image is resized, stripped of metadata, and compressed before publishing.</p>
             </div>
             <button class="admin-button admin-button--primary" type="button" data-open-item-modal>Add menu item</button>
         </section>
@@ -176,7 +178,7 @@ $categoryGroups = menu_categories();
             <div class="admin-item-list" data-admin-item-list>
                 <?php foreach ($items as $item): ?>
                     <?php
-                    $image = (string) ($item['thumb'] ?? $item['image'] ?? 'images/logo.jpg');
+                    $image = (string) ($item['thumb'] ?? $item['image'] ?? $config['menu_placeholder']);
                     $search = strtolower((string) $item['title'] . ' ' . category_label((string) $item['category']));
                     ?>
                     <article class="admin-item" data-admin-item data-search="<?= e($search) ?>">
@@ -293,4 +295,3 @@ $categoryGroups = menu_categories();
 <?php endif; ?>
 </body>
 </html>
-

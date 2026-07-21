@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-define('ASABANA_ADMIN', true);
+define('TAPXORA_ADMIN', true);
 require_once dirname(__DIR__) . '/includes/bootstrap.php';
 require_once BASE_PATH . '/includes/Auth.php';
 
@@ -21,4 +21,3 @@ try {
 
 header('Location: ' . app_url('admin/'));
 exit;
-

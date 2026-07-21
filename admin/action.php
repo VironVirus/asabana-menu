@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-define('ASABANA_ADMIN', true);
+define('TAPXORA_ADMIN', true);
 require_once dirname(__DIR__) . '/includes/bootstrap.php';
 require_once BASE_PATH . '/includes/Auth.php';
 require_once BASE_PATH . '/includes/ImageProcessor.php';
@@ -84,8 +84,8 @@ try {
             'price' => (int) $priceInput,
             'type' => $type,
             'category' => $category,
-            'image' => $newImages['image'] ?? $existing['image'] ?? 'images/logo.jpg',
-            'thumb' => $newImages['thumb'] ?? $existing['thumb'] ?? $existing['image'] ?? 'images/logo.jpg',
+            'image' => $newImages['image'] ?? $existing['image'] ?? site_config()['menu_placeholder'],
+            'thumb' => $newImages['thumb'] ?? $existing['thumb'] ?? $existing['image'] ?? site_config()['menu_placeholder'],
             'is_available' => isset($_POST['is_available']),
             'is_special' => isset($_POST['is_special']),
             'display_order' => (int) $displayOrder,
@@ -116,4 +116,3 @@ try {
 
 header('Location: ' . app_url('admin/'));
 exit;
-

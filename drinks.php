@@ -8,10 +8,10 @@ $items = menu_store()->items('drinks', true);
 
 render_public_header(
     'drinks',
-    'Drinks Menu | Asabana Hotel',
-    'Refreshing beverage collection',
-    'A drink for every occasion',
-    'Premium beers, refreshing sodas, energising favourites, juices, yoghurt, tea, and water.',
+    'Drinks menu | Tapxora template menu',
+    'Refresh your order',
+    'The right drink, right away.',
+    'Explore chilled favourites, search in seconds, and add a drink to your order with one tap.',
     'hero--drinks'
 );
 ?>
@@ -26,4 +26,3 @@ render_public_header(
     <?php render_menu_sections('drinks', $items); ?>
 </main>
 <?php render_public_footer(); ?>
-

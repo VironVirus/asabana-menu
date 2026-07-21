@@ -51,7 +51,7 @@ function start_secure_session(): void
         throw new RuntimeException('Secure session storage is unavailable.');
     }
 
-    session_name('asabana_admin');
+    session_name('tapxora_menu_admin');
     ini_set('session.use_strict_mode', '1');
     ini_set('session.use_only_cookies', '1');
     ini_set('session.cookie_httponly', '1');

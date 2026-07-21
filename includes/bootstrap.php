@@ -7,11 +7,12 @@ ini_set('display_errors', '0');
 ini_set('log_errors', '1');
 
 require_once BASE_PATH . '/includes/helpers.php';
+require_once BASE_PATH . '/includes/config.php';
 require_once BASE_PATH . '/includes/categories.php';
 require_once BASE_PATH . '/includes/MenuStore.php';
 
 date_default_timezone_set('Africa/Lagos');
-send_security_headers(defined('ASABANA_ADMIN') && ASABANA_ADMIN === true);
+send_security_headers(defined('TAPXORA_ADMIN') && TAPXORA_ADMIN === true);
 
 function menu_store(): MenuStore
 {

@@ -8,10 +8,10 @@ $items = menu_store()->items('food', true);
 
 render_public_header(
     'food',
-    'Food Menu | Asabana Hotel',
-    'Exquisite culinary collection',
-    'Food made for every appetite',
-    'Comforting local favourites, satisfying quick bites, and memorable grill selections.',
+    'Food menu | Tapxora template menu',
+    'Fresh from the kitchen',
+    'Find your next favourite.',
+    'Browse every dish by category, search by name, and add your choices to one simple order.',
     'hero--food'
 );
 ?>
@@ -26,4 +26,3 @@ render_public_header(
     <?php render_menu_sections('food', $items); ?>
 </main>
 <?php render_public_footer(); ?>
-
